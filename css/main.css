@@ -1,0 +1,504 @@
+@font-face {
+    font-family: 'Roboto';
+    font-weight: normal;
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+html, body {
+    height: 100%;
+}
+
+footer {
+    user-select: none;
+
+    position: absolute;
+    bottom: 0;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2px 5px;
+
+    background: #00000062;
+    font-family: Roboto, sans-serif;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#build-number {
+    font-size: smaller;
+}
+
+.bg1 {
+    background: url(../images/bg1.webp);
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.bg2 {
+    background: url(../images/bg2.webp);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#global-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 750px;
+    min-height: 250px;
+
+    padding: 2em;
+    box-sizing: border-box;
+
+    user-select: none;
+
+    background: white;
+    border-radius: 3em;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+
+    font-family: Roboto, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-container {
+    min-width: 700px;
+    min-height: 600px;
+}
+
+.container_wrapper {
+    min-height: inherit;
+    min-width: inherit;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-container_wrapper {
+    min-width: initial;
+    width: 400px;
+
+    margin: 0 auto;
+    align-items: stretch;
+}
+
+#aumsu-logo {
+    width: 250px;
+    pointer-events: none;
+    align-self: center;
+}
+
+#main-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 3em;
+}
+
+#group-select-container {
+    width: 100%;
+
+    transition: opacity 0.3s ease;
+}
+
+#main-form .select-wrapper {
+    width: 100%;
+    padding-right: 14px;
+    margin-bottom: 2em;
+
+    box-sizing: border-box;
+    position: relative;
+}
+
+#main-form .select-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 0px;
+
+    border: 5px solid transparent;
+    border-top: 8px solid black;
+}
+
+#main-form .select-container-hide {
+    opacity: 0;
+}
+
+#main-form .select-container-hide select {
+    cursor: default;
+}
+
+#main-form label {
+    display: block;
+    text-align: center;
+}
+
+#main-form select {
+    font-family: Roboto, sans-serif;
+    width: 100%;
+    padding: 5px 3px 0;
+    box-sizing: border-box;
+
+    font-size: 12pt;
+
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    background: white;
+    appearance: unset;
+
+    cursor: pointer;
+
+    transition: background 0.1s ease;
+}
+
+#main-form select:hover {
+    background: #e7e7e7;
+}
+
+#main-form .select-error {
+    background: #ff8383;
+}
+
+#main-form option {
+    background: white;
+}
+
+#main-form label {
+    font-size: 18pt;
+    margin-bottom: 0.3em;
+}
+
+.button {
+    height: 60px;
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 0.4em;
+    background: #007CC3;
+    box-shadow: 0 3px 0 #1e588f;
+    text-shadow: 0 2px 0 #1e588f;
+
+    outline: none;
+
+    font-family: Roboto, sans-serif;
+    font-size: 20pt;
+    color: white;
+
+    cursor: pointer;
+}
+
+.button:focus {
+    border: 2px solid #d6d6d6;
+}
+
+.button:hover {
+    background:#5cb0e0;
+    box-shadow: 0 3px 0 #4986be;
+    text-shadow: 0 2px 0 #4986be;
+
+    border-color: transparent;
+
+    transition: all 0.1s ease-out;
+}
+
+.button:active {
+    background:#c8ebff;
+    box-shadow: 0 3px 0 #7eb3e6;
+    text-shadow: 0 2px 0 #7eb3e6;
+
+    transition: all 0.05s ease-out;
+}
+
+.fixed-width-1 {
+    width: 250px;
+}
+
+.fixed-width-2 {
+    width: 200px;
+}
+
+.fixed-width-3 {
+    padding: 0 2em;
+    max-width: 100%;
+}
+
+.title {
+    font-size: 26pt;
+    text-align: center;
+}
+
+.title-2 {
+    font-size: 30pt;
+    text-align: center;
+}
+
+.vertical_center {
+    min-height: inherit;
+    display: flex;
+    align-items: center;
+}
+
+#test-buttons {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 3em 0;
+}
+
+#main-form select:focus {
+    outline: 2px solid #d6d6d6;
+}
+
+.test-button {
+    margin: 0.15em 0;
+    height: 40px;
+
+    font-size: 18pt;
+
+    background: #2FA72C;
+    box-shadow: 0 3px 0 #0B8109;
+    text-shadow: 0 2px 0 #0B8109;
+}
+
+.back-button {
+    background: #BEBEBE;
+    box-shadow: 0 3px 0 #888888;
+    text-shadow: 0 2px 0 #888888;
+}
+
+.desc-wrapper {
+    min-height: inherit;
+}
+
+.test-description {
+    font-size: 18pt;
+
+    margin-top: 1em;
+    color: #585858;
+}
+
+.begin-button {
+    background: #2FA72C;
+    box-shadow: 0 3px 0 #0B8109;
+    text-shadow: 0 2px 0 #0B8109;
+}
+
+.finish-button {
+    margin-left: 20px;
+    min-width: 200px;
+
+    background: #88d15e;
+    box-shadow: 0 3px 0 #52a026;
+    text-shadow: 0 2px 0 #52a026;
+}
+
+.mini-height-button {
+    height: 40px;
+}
+
+.header {
+    font-size: 18pt;
+    color: #585858;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer {
+    min-width: inherit;
+    min-height: 40px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.align_center {
+    justify-content: center;
+}
+
+.footer-content-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-grow {
+    flex: 1;
+}
+
+#current-question {
+    margin-top: 0.7em;
+    align-self: stretch;
+
+    font-size: 22pt;
+    line-height: 30pt;
+    padding-bottom: 1em;
+}
+
+.answer-buttons-container {
+    min-width: inherit;
+    padding-bottom: 1.7em;
+
+    display: flex;
+    align-self: stretch;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.answer-button {
+    margin: 0.2em 0;
+    color: #898989;
+    background: #e4e4e4;
+    box-shadow: 0 3px 0 #cbcbcb;
+    text-shadow: 0 2px 0 #cbcbcb;
+}
+
+.answer-button:hover {
+    color: white;
+}
+
+.answered {
+    color: #46401f;
+    background: #ffea71;
+    box-shadow: 0 3px 0 #ceb52c;
+    text-shadow: 0 2px 0 #ceb52c;
+}
+
+.answered:hover {
+    color: white;
+    background: #d4c04e;
+    box-shadow: 0 3px 0 #ac9b3b;
+    text-shadow: 0 2px 0 #ac9b3b;
+}
+
+.answered:active {
+    color: black;
+    background: #fff5ba;
+    box-shadow: 0 3px 0 #e4d372;
+    text-shadow: 0 2px 0 #e4d372;
+}
+
+.hidden {
+    display: none;
+}
+
+@media handheld, (max-height: 800px), (max-width: 1000px) {
+    .container {
+        border-radius: 0;
+        height: 100%;
+        width: 100%;
+        max-width: 800px;
+
+        justify-content: space-between;
+    }
+
+    .container_wrapper {
+        height: 80%;
+    }
+
+    .container_wrapper-test-choose {
+        height: 100%;
+    }
+
+    #back-to-start-screen-button {
+        min-width: 60%;
+    }
+
+    .desc-wrapper {
+        margin-bottom: 1.5em;
+    }
+
+    .test-description {
+        font-size: 16pt;
+    }
+
+    #current-question {
+        height: inherit;
+        font-size: 16pt;
+        line-height: normal;
+    }
+
+    #extended-answers .button {
+        padding: initial;
+        margin: 0.15em 0;
+    }
+
+    footer {
+        background: none;
+        color: black;
+        width: 100%;
+        max-width: 800px;
+        font-size: 10pt;
+    }
+
+    .main-container {
+        min-width: 0;
+        min-height: 0;
+
+        justify-content: flex-start;
+    }
+
+    .main-container_wrapper {
+        width: 100%;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    #aumsu-logo {
+        width: initial;
+        height: 8em;
+    }
+
+    #main-form {
+        margin: 0;
+    }
+
+    .button {
+        white-space: normal;
+        height: auto;
+        padding: 0.2em 0.5em;
+    }
+
+    .footer_test-start-screen {
+        flex-direction: column-reverse;
+    }
+
+    .fixed-width-1 {
+        width: 100%;
+        margin-top: 0.4em;
+    }
+
+    .footer_test-question-screen {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .footer_test-question-screen {
+        flex-direction: column;
+    }
+
+    .finish-button {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        margin-top: 0.6em;
+    }
+
+    .fixed-width-2 {
+        min-width: 0;
+        max-width: 47%;
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты по психологии</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body id="global-wrapper" class="bg1">
+    <div class="container main-container" id="start-screen">
+        <div class="container_wrapper main-container_wrapper">
+            <img src="images/aumsu_logo.png" id="aumsu-logo" alt="aumsu logo">
+            <form id="main-form">
+                <label for="gender-select">Пол</label>
+                <div class="select-wrapper">
+                    <select name="gender" id="gender-select">
+                        <option value="none">Не выбрано...</option>
+                        <option value="male">Мужской</option>
+                        <option value="female">Женский</option>
+                    </select>
+                </div>
+                <label for="organization-select">Учебная организация</label>
+                <div class="select-wrapper">
+                    <select name="organization" id="organization-select"></select>
+                </div>
+                <div id="group-select-container" class="select-container-hide">
+                    <label for="group-select">Группа</label>
+                    <div class="select-wrapper">
+                        <select name="group" id="group-select"></select>
+                    </div>
+                </div>
+            </form>
+            <input type="button" id="start-testing-button" value="Начать тестирование" class="button">
+        </div>
+    </div>
+
+    <div class="container hidden" id="test-choose-screen">
+        <div class="container_wrapper container_wrapper-test-choose">
+            <p class="title">Выбор теста</p>
+            <div id="test-buttons"></div>
+            <input type="button" id="back-to-start-screen-button" value="Завершить тестирование" class="button back-button fixed-width-3">
+        </div>
+    </div>
+
+    <div class="container hidden" id="test-start-screen">
+        <div class="container_wrapper">
+            <p class="title" id="current-test-title">Зависимое поведение</p>
+            <div class="desc-wrapper">
+                <p class="test-description">На прохождение теста дается 30 минут. По истечению таймера тестирование завершится автоматически.</p>
+                <p class="test-description">Как будете готовы, нажмите кнопку Приступить.</p>
+            </div>
+        </div>
+        <div class="footer footer_test-start-screen">
+            <input type="button" id="back-to-test-choose-screen-button" value="Вернуться" class="button back-button fixed-width-1">
+            <input type="button" id="begin-selected-test-button" value="Приступить" class="button begin-button fixed-width-1">
+        </div>
+    </div>
+
+    <div class="container hidden" id="test-question-screen">
+        <div class="header">
+            <p id="percents">percents</p>
+            <p id="time"></p>
+        </div>
+        <div class="container_wrapper">
+            <p id="current-question">question</p>
+            <div id="simple-answers" class="answer-buttons-container hidden">
+                <input type="button" id="yes-button" value="Да" class="button answer-button mini-height-button">
+                <input type="button" id="no-button" value="Нет" class="button answer-button mini-height-button">
+            </div>
+            <div id="extended-answers" class="answer-buttons-container hidden">
+                <input type="button" id="answer-no-button"          value="Совсем не так" class="button answer-button mini-height-button">
+                <input type="button" id="answer-almost-no-button"   value="Скорее не так" class="button answer-button mini-height-button">
+                <input type="button" id="answer-neutral-button"     value="И так, и не так" class="button answer-button mini-height-button">
+                <input type="button" id="answer-almost-yes-button"  value="Скорее так" class="button answer-button mini-height-button">
+                <input type="button" id="answer-yes-button"         value="Именно так" class="button answer-button mini-height-button">
+            </div>
+        </div>
+        <div class="footer footer_test-question-screen">
+            <div class="footer-content-wrapper flex-grow">
+                <input type="button" id="previous-question-button" value="Назад" class="button back-button fixed-width-2 mini-height-button">
+                <div class="flex-grow"></div>
+                <input type="button" id="next-question-button" value="Далее" class="button next-button fixed-width-2 mini-height-button">
+            </div>
+            <div class="footer-content-wrapper">
+                <input type="button" id="finish-test-button" value="Завершить" class="button finish-button mini-height-button hidden">
+            </div>
+        </div>
+    </div>
+
+    <div class="container hidden" id="test-finish-screen">
+        <div class="container_wrapper">
+            <p class="title-2 vertical_center">Прохождение теста завершено</p>
+        </div>
+        <div class="footer align_center">
+            <input type="button" id="return-to-start-screen-button" value="Вернуться к выбору тестов" class="button fixed-width-3">
+        </div>
+    </div>
+
+    <footer>
+        <p>LiteTests v1.0 <span id="build-number">05</span></p>
+        <p>Maksim P., Andrey Z. ©2021</p>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/test_1.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
