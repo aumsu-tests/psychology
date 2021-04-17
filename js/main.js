@@ -89,7 +89,7 @@ $(document).ready(function() {
     next_question_button.click(() => next_question());
 
     finish_test_button = $("#finish-test-button");
-    finish_test_button.click(() => finish_test(true, true));
+    finish_test_button.click(() => finish_test(true, false));
 
     test_finish_screen = $("#test-finish-screen");
 
@@ -181,8 +181,7 @@ $(document).ready(function() {
             global_wrapper.removeClass("bg1");
             global_wrapper.addClass("bg2");
 
-            test_buttons.html(generate_tests_buttons(TestData.tests));
-            generate_test_buttons_events(TestData.tests);
+            create_tests_buttons();
         }
     });
 
@@ -207,8 +206,12 @@ $(document).ready(function() {
             begin_test();
         }
     });
-    //begin_test(); //FIXME убрать после теста
 });
+
+function create_tests_buttons() {
+    test_buttons.html(generate_tests_buttons(TestData.tests));
+    generate_test_buttons_events(TestData.tests);
+}
 
 function create_org_list(orgs) {
     if (orgs == null || orgs.length < 1) {
@@ -255,20 +258,9 @@ function generate_tests_buttons(tests) {
         }
 
         html += create_test_button(i, tests[i].name);
-
-        $(`#test-${i}-button`).click(function() {
-            current_test = TestData.tests[i];
-            current_test_title.html(current_test.name);
-            test_choose_screen.addClass("hidden");
-            test_start_screen.removeClass("hidden");
-        });
     }
 
     return html;
-}
-
-function create_test_button(index, name) {
-    return `<input type="button" id="test-${index}-button" value="${name}" class="button test-button">\n`;
 }
 
 function generate_test_buttons_events(tests) {
@@ -277,13 +269,31 @@ function generate_test_buttons_events(tests) {
     }
 
     for (let i = 0; i < tests.length; i++) {
+        if (tests[i].gender != null) {
+            if (tests[i].gender != gender) continue;
+        }
+
         $(`#test-${i}-button`).click(function() {
+            if (tests_data[i].status == "finished") {
+                alert("Вы уже прошли этот тест.");
+                return;
+            }
+
             current_test = TestData.tests[i];
+            current_test.id = i;
             current_test_title.html(current_test.name);
             test_choose_screen.addClass("hidden");
             test_start_screen.removeClass("hidden");
         });
     }
+}
+
+function create_test_button(index, name) {
+    let passed_test = "";
+    if (tests_data[index].status == "finished") {
+        passed_test = "passed-test";
+    }
+    return `<input type="button" id="test-${index}-button" value="${name}" class="button test-button ${passed_test}">\n`;
 }
 
 let questions_passed = 1;
@@ -431,6 +441,9 @@ function finish_test(isConfirm = true, showAnswers = false) {
     }
 
     clearInterval(timer_id);
+
+    create_tests_buttons();
+
     test_question_screen.addClass("hidden");
     test_finish_screen.removeClass("hidden");
 }
