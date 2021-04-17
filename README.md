@@ -1,2 +1,2 @@
 # psychology
-Psychology tests
+Psychology tests web application
