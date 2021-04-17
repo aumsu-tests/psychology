@@ -289,6 +289,13 @@ footer {
     text-shadow: 0 2px 0 #0B8109;
 }
 
+.passed-test {
+    background: #ececec;
+    box-shadow: 0 3px 0 #fff;
+    text-shadow: 0 2px 0 #cecece;
+    color: #808080;
+}
+
 .back-button {
     background: #BEBEBE;
     box-shadow: 0 3px 0 #888888;
@@ -453,7 +460,7 @@ footer {
 
     footer {
         background: none;
-        color: black;
+        color: #aaaaaa;
         width: 100%;
         max-width: 800px;
         font-size: 10pt;
@@ -461,7 +468,7 @@ footer {
 
     .main-container {
         min-width: 0;
-        min-height: 0;
+        min-height: inherit;
 
         justify-content: flex-start;
     }
@@ -472,9 +479,23 @@ footer {
         justify-content: space-between;
     }
 
+    #main-form .select-wrapper {
+        padding-right: 0;
+        margin-bottom: 1em;
+    }
+
+    #main-form .select-wrapper::after {
+        display: none;
+    }
+
+    #start-testing-button {
+        padding: 0.5em 0.2em;
+    }
+
     #aumsu-logo {
         width: initial;
         height: 8em;
+        margin-bottom: 0.5em;
     }
 
     #main-form {
