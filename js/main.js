@@ -186,10 +186,8 @@ $(document).ready(function() {
     });
 
     $("#back-to-start-screen-button").click(function() {
-        // test_choose_screen.addClass("hidden");
-        // start_screen.removeClass("hidden");
-        // global_wrapper.removeClass("bg2");
-        // global_wrapper.addClass("bg1");
+        generate_excel();
+
         location.reload();
     });
 
@@ -211,6 +209,52 @@ $(document).ready(function() {
 function create_tests_buttons() {
     test_buttons.html(generate_tests_buttons(TestData.tests));
     generate_test_buttons_events(TestData.tests);
+}
+
+function generate_excel() {
+    var book = XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(
+        book,
+        XLSX.utils.aoa_to_sheet([
+            ["Пол", gender_select.val()],
+            ["Орг-ция", TestData.orgs[org_select.val()].name],
+            ["Группа", TestData.orgs[org_select.val()].groups[grp_select.val()]]
+        ]),
+        "Информация"
+    );
+
+    let passed_tests_count = 0;
+
+    for (var test in tests_data) {
+        if (tests_data[test].status != "finished") continue;
+
+        passed_tests_count++;
+
+        var answer_sheet = [[]];
+        answer_sheet[0] = [tests_data[test].name];
+        answer_sheet[2] = ["Номер", "Ответ"];
+
+        let answer_index = 3;
+        for (var answer in tests_data[test].answers) {
+            answer_sheet[answer_index] = [answer, tests_data[test].answers[answer]];
+            answer_index++;
+        }
+
+        XLSX.utils.book_append_sheet(
+            book,
+            XLSX.utils.aoa_to_sheet(answer_sheet),
+            `Тест ${tests_data[test].id}`
+        );
+    }
+
+    if (passed_tests_count == 0) return;
+
+    XLSX.writeFile(book, "write3.ods");
+
+    //var wopts = { bookType:'ods', bookSST:false, type:'base64' };
+    //var wbout = XLSX.write(wb,wopts);
+    //console.log(wbout);
 }
 
 function create_org_list(orgs) {
@@ -246,6 +290,8 @@ function create_list_item(value, text, extTags = "") {
     return `<option value="${value}" ${extTags}>${text}</option>\n`;
 }
 
+let tests_data = {};
+
 function generate_tests_buttons(tests) {
     if (tests == null) {
         return "";
@@ -255,6 +301,12 @@ function generate_tests_buttons(tests) {
     for (let i = 0; i < tests.length; i++) {
         if (tests[i].gender != null) {
             if (tests[i].gender != gender) continue;
+        }
+
+        if (tests_data[i] == null) {
+            tests_data[i] = {};
+            tests_data[i].status = "available";
+            tests_data[i].name = TestData.tests[i].name;
         }
 
         html += create_test_button(i, tests[i].name);
@@ -441,6 +493,13 @@ function finish_test(isConfirm = true, showAnswers = false) {
     }
 
     clearInterval(timer_id);
+
+    tests_data[current_test.id].status = "finished";
+    tests_data[current_test.id].id = current_test.id + 1;
+    tests_data[current_test.id].answers = {};
+    for (key in answers) {
+        tests_data[current_test.id].answers[key] = answers[key];
+    }
 
     create_tests_buttons();
 
