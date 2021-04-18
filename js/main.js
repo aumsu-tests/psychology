@@ -68,7 +68,6 @@ let finished_tests = [];
 
 $(document).ready(function() {
     TestData = GetData();
-    //current_test = TestData.tests[2]; //FIXME убрать после теста
 
     global_wrapper = $("#global-wrapper");
 
